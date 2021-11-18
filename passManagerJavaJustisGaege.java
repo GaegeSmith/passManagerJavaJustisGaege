@@ -19,9 +19,6 @@ public class passManagerJavaJustisGaege {
                     hint happens
                     2 tries
                     close app
-            
-            
-
         */
     }
 }
