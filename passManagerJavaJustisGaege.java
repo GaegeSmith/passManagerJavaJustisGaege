@@ -4,6 +4,15 @@ public class passManagerJavaJustisGaege {
             Account
                 whereIsUsed & username & password
 
+                class Hat {
+                    int size;
+                    String color;
+                    Hat(int size, String color){
+                        this.size = size;
+                        this.color = color;
+                    }
+                }
+
             PasswordHandler
                 passwordChecker
                 passwordGenerator
