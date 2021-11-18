@@ -16,10 +16,10 @@ public class Useful {
     public static Scanner newScanner() {
         return new Scanner(System.in);
     }
-    public static int[] intputs() {
-        Scanner ui = newScanner()
-        String tmp = 
-    }
+    // public static int[] intputs() {
+    //     Scanner ui = newScanner()
+    //     String tmp = 
+    // }
 
     public static int howMany(String s, char chr) {
         int count = 0;
