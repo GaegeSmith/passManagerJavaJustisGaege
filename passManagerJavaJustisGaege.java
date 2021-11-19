@@ -32,9 +32,15 @@ public class passManagerJavaJustisGaege {
 
             internal commands
                 add
-                    add an account
+                    add an account/category
                 remove
-                    remove an account
+                    remove an account, if a catagory is empty, it will delete at the next save
+                save
+                    save current state
+                close
+                    save and end the program
+                delete profile
+                    delete entire profile
                 
         */
     }

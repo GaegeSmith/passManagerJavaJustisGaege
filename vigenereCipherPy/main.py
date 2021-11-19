@@ -4,7 +4,7 @@ Terminal.clear()
 
 
 lets = Strings.lets('a','z') + Strings.lets('A','Z') + Strings.lets('0', '9') + ["!", "@", "#", "$", "%", "^", "&", "(", ")"]
-
+print(lets)
 def createCipher():
     letGrid = Grid.create(len(lets), len(lets))
     counter = 0

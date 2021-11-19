@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.lang.Math;
+import java.util.ArrayList;
 
 public class Useful {
 
@@ -30,7 +31,14 @@ public class Useful {
         }
         return count;
     }
-
+    public static ArrayList<String> lets(char start, char end) {
+        ArrayList<String> results = new ArrayList<String>();
+        for (int i = (int) start; i <= (int) end; i++) {
+            // https://stackoverflow.com/questions/8172420/how-to-convert-a-char-to-a-string
+            results.add(String.valueOf((char) i));
+        }
+        return results;
+    }
     public static class Point {
         double x;
         double y;
