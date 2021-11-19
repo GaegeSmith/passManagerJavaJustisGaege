@@ -1,4 +1,4 @@
-public class passManagerJavaJustisGaege {
+public class PassManagerJavaJustisGaege {
 
     public static void main(String[] args) {
         /* TODO:
