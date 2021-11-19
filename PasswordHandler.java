@@ -31,6 +31,12 @@ public class PasswordHandler {
         return false;
             
     }
+    public static boolean generator(){
+        
+        return true;
+        
+
+    }
     
     
 
