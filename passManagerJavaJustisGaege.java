@@ -28,6 +28,14 @@ public class passManagerJavaJustisGaege {
                     hint happens
                     2 tries
                     close app
+
+
+            internal commands
+                add
+                    add an account
+                remove
+                    remove an account
+                
         */
     }
 }
