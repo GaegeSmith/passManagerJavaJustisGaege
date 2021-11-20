@@ -1,16 +1,28 @@
 import java.util.ArrayList;
 
 public class Crypting {
-    // vigenere cipher with username and password
+    // vigenère cipher with username and password
     // sci show video https://youtu.be/-yFZGF8FHSg?t=180
-    public ArrayList<String> acceptable;
-    public ArrayList<String> cipher;
+    ArrayList<String> acceptable;
+    ArrayList<ArrayList<String>> cipherTable;
+    String key;
+    Crypting(String key) {
+        this.key = key;
+        this.acceptable = genAcceptable();
+        this.cipherTable = genCipherTable();
+    }
+    public static ArrayList<ArrayList<String>> genCipherTable() {
+        ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
+        
 
-    public ArrayList<String> genCipher() {
-        cipher
     }
 
-    public ArrayList<String> genAcceptable() {
-        
+    public static ArrayList<String> genAcceptable() {
+        ArrayList<String> results = new ArrayList<String>();
+        for (String i : Useful.lets('a', 'z')) {results.add(i);}
+        for (String i : Useful.lets('A', 'Z')) {results.add(i);}
+        for (String i : Useful.lets('0', '9')) {results.add(i);}
+        for (String i : Useful.specialChars()) {results.add(i);}
+        return results;
     }
 }
