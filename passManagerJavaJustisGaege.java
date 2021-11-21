@@ -15,8 +15,8 @@ public class passManagerJavaJustisGaege {
                 }
 
             PasswordHandler
-                passwordChecker
-                passwordGenerator
+                Done-> passwordChecker
+                Needs to be checked-> passwordGenerator
 
             logIn/acctCreation
                 check for pre-existing profile
@@ -30,7 +30,7 @@ public class passManagerJavaJustisGaege {
                     2 tries
                     close app
 
-
+                //Started this portion of the code :) still working on the save portion of ("c")
             internal commands
                 add
                     add an account/category

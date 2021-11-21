@@ -1,9 +1,10 @@
+import java.util.Random;q
+//https://www.geeksforgeeks.org/random-vs-secure-random-numbers-java/
+import java.security.SecureRandom;
 public class PasswordHandler {
     public static boolean checker(String password){
-        String[] numbers ={"0", "1", "2", "3", "4", "5","6", "7", "8", "9" };
-        String[] capLetter ={"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
-        String[] lowLetter ={"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p","q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
-        String[] specLetter = {"!", "@", "#", "$", "%", "^", "&", "(", ")"};
+        String[] chars ={"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnoqrstuvwxy!@#$%^&()"};
+        generator();
         
         //Good Password return True
         //Bad Password return Bad 
@@ -17,6 +18,7 @@ public class PasswordHandler {
         }
         //if it works then return true 
         return true;
+        
     }   
     //Array                            //Pulling in password and arr
     public static boolean contains(String password, String[] arr){
@@ -31,11 +33,32 @@ public class PasswordHandler {
         return false;
             
     }
-    public static boolean generator(){
-        
-        return true;
-        
+    // Method to generate a random alphanumeric password of a specific length
 
+    public static boolean generator(int len){
+        //src: https://stackoverflow.com/questions/19743124/java-password-generator/41891760 
+        //String password = new Random().ints(10, 33, 122).collect(StringBuilder::new,
+        //StringBuilder::appendCodePoint, StringBuilder::append).toString();
+
+        // using secure random for a cryptographically strong random number generator.
+        SecureRandom random = new SecureRandom();
+        for (int i = 0; i < len; i++){
+            //getting the random next Int inside of the chars list 
+            int randomIndex = random.nextInt(chars.length());
+            //charAt  returns a character at a specific index position in a string  
+            sb.append(chars.charAt(randomIndex));
+        }
+ 
+        return sb.toString();
+    }
+ 
+    public static void main(String[] args)
+    {
+        int len = 10;
+        System.out.println(generateRandomPassword(len));
+    }
+}
+        
     }
     
     
