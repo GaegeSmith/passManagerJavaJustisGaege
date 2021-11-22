@@ -54,7 +54,7 @@ public class PassManagerJavaJustisGaege {
         ArrayList<String> accounts = new ArrayList<String>();
         while (! input.equals("q")){
             //System.out.println(account);
-            System.out.println("Would you like to (a)dd, (r)emove , (s)ave, ,(c)lose ,(d)elete or (q)uit");
+            System.out.println("Would you like to do (a)dd, (r)emove , (s)ave, ,(c)lose ,(d)elete or (q)uit");
             input = in.nextLine();
             
             if(input.equals("a")){
@@ -88,8 +88,9 @@ public class PassManagerJavaJustisGaege {
                 input = in.nextLine();
                 //.join is going to join the listArray with , 
                 //src: https://stackoverflow.com/questions/599161/best-way-to-convert-an-arraylist-to-a-string
-                String accountsList = String.join(",",accounts);
-                BufferWriter.writeString(accountsList); 
+                //String accountsList = String.join(",",accounts);
+                //https://stackoverflow.com/questions/942326/calling-static-method-on-a-class and bander 
+                BufferWriter.saveAndClose(); 
                 System.exit(0);
                 //still needs the save portion 
             }
