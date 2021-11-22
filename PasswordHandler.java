@@ -1,10 +1,14 @@
-import java.util.Random;q
+import java.util.Random;
+import java.security.SecureRandom;
 //https://www.geeksforgeeks.org/random-vs-secure-random-numbers-java/
 import java.security.SecureRandom;
 public class PasswordHandler {
     public static boolean checker(String password){
-        String[] chars ={"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnoqrstuvwxy!@#$%^&()"};
-        generator();
+        String[] numbers ={"0", "1", "2", "3", "4", "5","6", "7", "8", "9" };
+        String[] capLetter ={"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
+        String[] lowLetter ={"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p","q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
+        String[] specLetter = {"!", "@", "#", "$", "%", "^", "&", "(", ")"};
+        generator(8);
         
         //Good Password return True
         //Bad Password return Bad 
@@ -12,7 +16,7 @@ public class PasswordHandler {
         //contains atleast one :["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p","q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
         // ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"] 
         //["!", "@", "#", "$", "%", "^", "&", "(", ")"]
-//if password .length <8 then       !contain numbers                    !contains capLetter          !contains lowLetter               !contains SpecLetter return false
+        //if password .length <8 then       !contain numbers                    !contains capLetter          !contains lowLetter               !contains SpecLetter return false
         if (password.length()<8 || !contains(password, numbers) || !contains(password, capLetter) || !contains(password, lowLetter) || !contains(password, specLetter)){
             return false;
         }
@@ -35,7 +39,7 @@ public class PasswordHandler {
     }
     // Method to generate a random alphanumeric password of a specific length
 
-    public static boolean generator(int len){
+    public static String generator(int len){
         //src: https://stackoverflow.com/questions/19743124/java-password-generator/41891760 
         //String password = new Random().ints(10, 33, 122).collect(StringBuilder::new,
         //StringBuilder::appendCodePoint, StringBuilder::append).toString();
@@ -55,13 +59,13 @@ public class PasswordHandler {
     public static void main(String[] args)
     {
         int len = 10;
-        System.out.println(generateRandomPassword(len));
+        System.out.println(generator(len));
     }
-}
+
         
     }
     
     
 
     
-}
+
