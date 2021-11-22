@@ -54,8 +54,7 @@ public class PassManagerJavaJustisGaege {
         ArrayList<String> accounts = new ArrayList<String>();
         while (! input.equals("q")){
             //System.out.println(account);
-            System.out.println("Would you like to (a)dd, r(emove) , s(ave), ,c(lose) ,d(elete) or (q)uit");
-    
+            System.out.println("Would you like to (a)dd, (r)emove , (s)ave, ,(c)lose ,(d)elete or (q)uit");
             input = in.nextLine();
             
             if(input.equals("a")){
@@ -65,8 +64,10 @@ public class PassManagerJavaJustisGaege {
             }
             
             else if (input.equals("r")){ 
-                System.out.println("Enter account/cateorgy you want to remove:");
+                System.out.println("Enter account/cateorgy you want to remove (Exact Account/Cateorgy Name):");
                 input = in.nextLine();
+                //ask the ui the account they want removed has to be exact string
+
                 accounts.remove(input);
             }
     
@@ -80,8 +81,7 @@ public class PassManagerJavaJustisGaege {
             
             else if(input.equals("d")){
                 input = in.nextLine();
-                //ask the ui the account they want removed has to be exact string
-                accounts.remove() 
+                accounts.clear();
                 //src: https://howtodoinjava.com/java/collections/arraylist/empty-clear-arraylist/
             }
             else if(input.equals("c")){
