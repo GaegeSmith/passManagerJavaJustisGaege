@@ -64,9 +64,21 @@ public class Useful {
     public static class GridStr {
         // custom class for dealing with 2D ArrayLists, ugh
         ArrayList<ArrayList<String>> grid;
-        GridStr(ArrayList<ArrayList<String>> )
-        public ArrayList<String> getRow(int index) {
-            return 
+        GridStr(ArrayList<ArrayList<String>> grid2d) {
+            this.grid = grid2d;
+        }
+        public ArrayList<String> getRow(int row) {
+            return this.grid.get(row);
+        }
+        public String getPoint(int row, int col) {
+            return this.grid.get(row).get(col);
+        }
+        public ArrayList<String> getCol(int col) {
+            ArrayList<String> result = new ArrayList<String>();
+            for (int row = 0; row <= this.grid.size(); row++) {
+                result.add(this.grid.get(row).get(col));
+            }
+            return result;
         }
 
     }

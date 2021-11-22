@@ -14,6 +14,10 @@ public class Crypting {
     public static ArrayList<ArrayList<String>> genCipherTable() {
         ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
         
+        
+
+
+        return result;
 
     }
 
