@@ -6,16 +6,19 @@ import java.util.Scanner;
 public class BufferWriter {
     
     // global variables
-    private static final String DATA_FILE = "mymedia.txt";
+    private String dataFile;
     private static Scanner in;
     private static BufferedWriter out;
+    BufferWriter(String fileName) {
+        this.dataFile = fileName;
+    }
     
     // writeString
-    public static void writeString(String s) {
+    public void writeString(String s) {
         // check to see if out is assigned
         if (out == null) {
             try {
-                out = new BufferedWriter(new FileWriter(DATA_FILE));
+                out = new BufferedWriter(new FileWriter(this.dataFile));
             } catch (Exception e) {
                 System.err.println("Cannot open file for output!");
                 e.printStackTrace();
@@ -32,7 +35,7 @@ public class BufferWriter {
     }
     
     // saveAndClose
-    public static void saveAndClose() {
+    public void saveAndClose() {
         // closes after the Scanner is done reading flie
         if (in != null) {
             try {
@@ -57,11 +60,11 @@ public class BufferWriter {
     }
     
     // readString
-    public static String readString() {
+    public String readString() {
         String urMom = null;
         if (in == null) {
             try {
-                in = new Scanner(new File(DATA_FILE));
+                in = new Scanner(new File(dataFile));
             } catch (Exception e) {
                 System.err.println("Cannot open file for input!");
                 e.printStackTrace();
