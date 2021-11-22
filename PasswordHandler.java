@@ -8,7 +8,7 @@ public class PasswordHandler {
         String[] capLetter ={"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
         String[] lowLetter ={"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p","q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
         String[] specLetter = {"!", "@", "#", "$", "%", "^", "&", "(", ")"};
-        generator(8);
+        generator();
         
         //Good Password return True
         //Bad Password return Bad 
@@ -39,21 +39,23 @@ public class PasswordHandler {
     }
     // Method to generate a random alphanumeric password of a specific length
 
-    public static String generator(int len){
+    public static String generator(){
+        //String[] chars  = {"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnoqrstuvwxy!@#$%^&()"};
         //src: https://stackoverflow.com/questions/19743124/java-password-generator/41891760 
-        //String password = new Random().ints(10, 33, 122).collect(StringBuilder::new,
-        //StringBuilder::appendCodePoint, StringBuilder::append).toString();
+
+        String password = new Random().ints(10, 33, 122).collect(StringBuilder::new,
+        StringBuilder::appendCodePoint, StringBuilder::append).toString();
 
         // using secure random for a cryptographically strong random number generator.
-        SecureRandom random = new SecureRandom();
-        for (int i = 0; i < len; i++){
-            //getting the random next Int inside of the chars list 
-            int randomIndex = random.nextInt(chars.length());
-            //charAt  returns a character at a specific index position in a string  
-            sb.append(chars.charAt(randomIndex));
-        }
+        // SecureRandom random = new SecureRandom();
+        // for (int i = 0; i < len; i++){
+        //     //getting the random next Int inside of the chars list 
+        //     int randomIndex = random.nextInt(chars.length);
+        //     //charAt  returns a character at a specific index position in a string  
+        //     sb.append(chars.charAt(randomIndex));
+        // }
  
-        return sb.toString();
+        //return sb.toString();
     }
  
     public static void main(String[] args)
