@@ -80,19 +80,18 @@ public class PassManagerJavaJustisGaege {
             
             else if(input.equals("d")){
                 input = in.nextLine();
-                accounts.clear(input); //using clear instead of remove cause it clears the list/elements 
-                //src: https://stackoverflow.com/questions/6548157/how-to-write-an-arraylist-of-strings-into-a-text-file
-                FileWriter writer = new FileWriter("output.txt"); 
-                for(String str: arr) {
-                    writer.write(str + System.lineSeparator());
-                }
-                    writer.close();
+                //ask the ui the account they want removed has to be exact string
+                accounts.remove() 
                 //src: https://howtodoinjava.com/java/collections/arraylist/empty-clear-arraylist/
             }
             else if(input.equals("c")){
                 input = in.nextLine();
+                //.join is going to join the listArray with , 
+                //src: https://stackoverflow.com/questions/599161/best-way-to-convert-an-arraylist-to-a-string
+                String accountsList = String.join(",",accounts);
+                BufferWriter.writeString(accountsList); 
                 System.exit(0);
-                //still needs the save portion  
+                //still needs the save portion 
             }
             //Insert Portion 
             // else if (input.equals("i")){
