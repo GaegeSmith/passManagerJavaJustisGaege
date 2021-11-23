@@ -4,10 +4,12 @@ import java.security.SecureRandom;
 import java.security.SecureRandom;
 public class PasswordHandler {
     public static boolean checker(String password){
+
         String[] numbers = (String[]) Useful.lets('0', '9').toArray();
         String[] capLetter = (String[]) Useful.lets('A', 'Z').toArray();
         String[] lowLetter = (String[]) Useful.lets('a', 'z').toArray();
         String[] specLetter = (String[]) Useful.specialChars().toArray();
+
         
         //Good Password return True
         //Bad Password return Bad 
@@ -39,11 +41,15 @@ public class PasswordHandler {
     // Method to generate a random alphanumeric password of a specific length
 
     public static String generator(int len){
-        //String[] chars  = {"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnoqrstuvwxy!@#$%^&()"};
-        //src: https://stackoverflow.com/questions/19743124/java-password-generator/41891760 
 
-        String password = new Random().ints(10, 33, 122).collect(StringBuilder::new,
-        StringBuilder::appendCodePoint, StringBuilder::append).toString();
+        String[] numbers = (String[]) Useful.lets('0', '9').toArray();
+        String[] capLetter = (String[]) Useful.lets('A', 'Z').toArray();
+        String[] lowLetter = (String[]) Useful.lets('a', 'z').toArray();
+        String[] specLetter = (String[]) Useful.specialChars().toArray();    
+
+
+        
+    
 
         // using secure random for a cryptographically strong random number generator.
         // SecureRandom random = new SecureRandom();
@@ -57,4 +63,6 @@ public class PasswordHandler {
         //return sb.toString();
     }
 
+
 }
+
