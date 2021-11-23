@@ -19,6 +19,7 @@ public class AcctStorage {
         u for username
         p for password
         */
+        ArrayList<Account> results = new ArrayList<Account>();
         for (int i = 0; i < this.accounts.size(); i++) {
             switch (type) {
                 case 'c':
@@ -44,7 +45,7 @@ public class AcctStorage {
                 
             }
         }
-        return new Account(null, null, null, null);
+        return results;
     }
     
     public String prepToSave() {
