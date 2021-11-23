@@ -3,7 +3,6 @@ import java.util.ArrayList;
 public class AcctStorage {
     ArrayList<Account> accounts = new ArrayList<Account>();
     
-
     public void addAcct(Account acct) {
         accounts.add(acct);
     }
@@ -16,14 +15,20 @@ public class AcctStorage {
                 msg += "" + (i + 1) + ". " + found.get(i).username + "\n";
             }
 
-            int toDelete = Useful.intput(msg);
+            int toDelete = Useful.intput(msg) - 1;
+            while (toDelete >= found.size() || toDelete < 0) {
+                toDelete = Useful.intput(msg) - 1;
+            }
+            this.accounts.remove(found.get(toDelete));
+
         } else if (found.size() == 1) {
+            this.accounts.remove(found.get(0));
 
         } else {
             System.out.println("No accounts for " + location + " were found.");
+
         }
     }
-
     public ArrayList<Account> find(char type, String description) {
         /*
         these for type
@@ -60,7 +65,6 @@ public class AcctStorage {
         }
         return results;
     }
-    
     public String prepToSave() {
         String result = new String();
         

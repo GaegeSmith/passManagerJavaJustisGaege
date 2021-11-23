@@ -48,6 +48,17 @@ public class PasswordHandler {
         String[] specLetter = (String[]) Useful.specialChars().toArray();    
 
 
+
+
+
+
+
+
+
+
+
+        
+        return "";
         
     
 
