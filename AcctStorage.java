@@ -9,16 +9,18 @@ public class AcctStorage {
     }
     public void rmAcct(String location) {
         ArrayList<Account> found = this.find('l', location);
-        if (found.size() > 0) {
-            String msg = "";
+        if (found.size() > 1) {
+            String msg = "Which account do you want to remove?\n";
             
             for (int i = 0; i < found.size(); i++) {
-                
+                msg += "" + (i + 1) + ". " + found.get(i).username + "\n";
             }
 
             int toDelete = Useful.intput(msg);
+        } else if (found.size() == 1) {
+
         } else {
-            System.out.println("No accounts for " + " were found.");
+            System.out.println("No accounts for " + location + " were found.");
         }
     }
 
