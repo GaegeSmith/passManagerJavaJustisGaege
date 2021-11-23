@@ -3,7 +3,7 @@ import java.lang.Math;
 import java.util.ArrayList;
 
 public class Useful {
-
+ 
     public static String reverse(String reversee) {
         // init a result to add each letter to
         String result = "";
@@ -41,7 +41,7 @@ public class Useful {
     }
     public static ArrayList<String> specialChars() {
         ArrayList<String> results = new ArrayList<String>();
-        // ["!", "@", "#", "$", "%", "^", "&", "(", ")"]
+        // ["!", "@", "#", "$", "%", "^", "&", "(", ")");
         results.add("!");
         results.add("@");
         results.add("#");
@@ -60,6 +60,16 @@ public class Useful {
             this.x = x;
             this.y = y;
         }
+    }
+    public static String input(String msg) {
+        Scanner ui = newScanner();
+        System.out.print(msg);
+        return ui.nextLine();
+    }
+    public static int intput(String msg) {
+        Scanner ui = newScanner();
+        System.out.print(msg);
+        return ui.nextInt();
     }
     public static class GridStr {
         // custom class for dealing with 2D ArrayLists, ugh

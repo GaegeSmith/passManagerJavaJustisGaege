@@ -3,13 +3,17 @@ public class Account {
     String usedAt;
     String username;
     String password;
+    String category;
 
-    Account(String usedAt, String username, String password) {
+    Account(String usedAt, String username, String password, String category) {
         this.usedAt = usedAt;
         this.username = username;
         this.password = password;
+        this.category = category;
     }
 
-
+    public String prepareForSave() {
+        return "Account?ua:" + this.usedAt + "?un:" + this.username + "?pw:" + this.password + "?cat:" + this.category;
+    }
     
 }
