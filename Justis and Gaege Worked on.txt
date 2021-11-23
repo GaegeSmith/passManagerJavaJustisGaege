@@ -1,0 +1,13 @@
+Gaege:
+
+
+Justis:
+Password Handler 
+	Password Checker 
+	Password Contains 
+Tried to work on Password Generator not completely able to work
+
+Main Part of the PassManagerJavaJustisGaege
+	Add, Remove, close, delete 
+	Writing to a textfile and formated it mymedia.txt 
+

@@ -56,7 +56,7 @@ public class PassManagerJavaJustisGaege {
         
         while (! input.equals("q")){
             //System.out.println(account);
-            System.out.println("Would you like to do (a)dd, (r)emove , (s)ave, ,(c)lose or (d)elete");
+            System.out.println("Would you like to do (a)dd, (r)emove ,(c)lose or (d)elete");
             input = in.nextLine();
             
             if(input.equals("a")){
