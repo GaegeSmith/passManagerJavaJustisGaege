@@ -8,7 +8,8 @@ public class AcctStorage {
         accounts.add(acct);
     }
     public void rmAcct(String location) {
-        this.find('l', location)
+        ArrayList<Account> found = this.find('l', location);
+        if (found.size() == )
     }
 
     public ArrayList<Account> find(char type, String description) {
