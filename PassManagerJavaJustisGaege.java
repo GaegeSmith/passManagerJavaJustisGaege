@@ -18,7 +18,7 @@ public class PassManagerJavaJustisGaege {
 
             PasswordHandler
                 Done-> passwordChecker
-                Needs to be checked-> passwordGenerator
+                Needs to be checked sike not done -> passwordGenerator
 
             logIn/acctCreation
                 check for pre-existing profile
@@ -52,33 +52,67 @@ public class PassManagerJavaJustisGaege {
         int pos;
         //need to add in a new List for the animal one <-- Done     
         ArrayList<String> accounts = new ArrayList<String>();
+        ArrayList<String> cateorgy = new ArrayList<String>();
+        
         while (! input.equals("q")){
             //System.out.println(account);
-            System.out.println("Would you like to do (a)dd, (r)emove , (s)ave, ,(c)lose ,(d)elete or (q)uit");
+            System.out.println("Would you like to do (a)dd, (r)emove , (s)ave, ,(c)lose or (d)elete");
             input = in.nextLine();
             
             if(input.equals("a")){
-                System.out.println("Add an account/cateorgy");
-                input = in.nextLine();
-                accounts.add(input);
-            }
-            
-            else if (input.equals("r")){ 
-                System.out.println("Enter account/cateorgy you want to remove (Exact Account/Cateorgy Name):");
-                input = in.nextLine();
-                //ask the ui the account they want removed has to be exact string
-
-                accounts.remove(input);
-            }
-    
-            else if (input.equals("c")){
-                System.out.println("Are you sure?");
-                input = in.nextLine();
-                if(input.equals("yes")){
-                    accounts.clear();
+                System.out.println("Would you like to add an Account or Cateorgy (Type either one)");
+                input =in.nextLine();
+                if (input.equals("Account")){
+                    //ask for the account name then add it to the list 
+                    System.out.println("What is your Account Name?");    
+                    input = in.nextLine();
+                    accounts.add(input);
+                    System.out.println("Your account name is: "+accounts); //test remove when gaege gets it done 
+                    
+                }
+                else if (input.equals("Cateorgy")){
+                    //ask for the cateorgy name then add it to the list 
+                    System.out.println("What is your cateorgy Name?");
+                    //needs to print that name 
+                
+                    input = in.nextLine();
+                    cateorgy.add(input);
+                    System.out.println(cateorgy); //test remove when gaege gets it done 
+                }
+                else{
+                    System.out.println("Please spell it correctly.");
                 }
             }
             
+
+
+
+
+
+            else if (input.equals("r")){ 
+                System.out.println("Your Accounts are:"+accounts);//test to see if works
+                System.out.println("Your Cateorgy are:"+cateorgy);//test to see if works
+                System.out.println("Enter Account/Cateorgy you want to remove (Account/Cateorgy):");
+                input = in.nextLine();
+
+                if (input.equals("Cateorgy")){
+                    System.out.println("What cateorgy would you like to remove?");
+                    input = in.nextLine();
+                    cateorgy.remove(input);
+                    System.out.println("Your Cateorgys are:"+cateorgy);
+                }
+                else if (input.equals("Account")){
+                    System.out.println("What account would you like to remove?");
+                    input =in.nextLine();
+                    accounts.remove(input);
+                    System.out.println("Your Accounts are:"+accounts);
+                }
+                //ask the ui the account they want removed has to be exact string
+                
+            }
+            
+
+
             else if(input.equals("d")){
                 input = in.nextLine();
                 accounts.clear();
@@ -90,8 +124,21 @@ public class PassManagerJavaJustisGaege {
                 //src: https://stackoverflow.com/questions/599161/best-way-to-convert-an-arraylist-to-a-string
                 //String accountsList = String.join(",",accounts);
                 //https://stackoverflow.com/questions/942326/calling-static-method-on-a-class and bander 
-                BufferWriter.saveAndClose(); 
-                System.exit(0);
+                System.out.println("Are you sure?");
+                input = in.nextLine();
+                if(input.equals("yes")){ 
+                    String accountsList = String.join(",",accounts);
+                    String cateorgyList = String.join(",",cateorgy);
+
+                    //variable to format the write string named output d
+                    String output= ("Acccount:"+accountsList+"\n"+"Cateorgys:"+cateorgyList);
+                    BufferWriter.writeString(output);
+                    BufferWriter.saveAndClose(); 
+                    System.exit(0);
+                }
+                else if (input.equals("no")){
+
+                }
                 //still needs the save portion 
             }
             //Insert Portion 
