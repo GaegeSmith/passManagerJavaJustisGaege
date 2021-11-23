@@ -4,10 +4,10 @@ import java.security.SecureRandom;
 import java.security.SecureRandom;
 public class PasswordHandler {
     public static boolean checker(String password){
-        String[] numbers = {"0", "1", "2", "3", "4", "5","6", "7", "8", "9" };
-        String[] capLetter = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
-        String[] lowLetter = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p","q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
-        String[] specLetter = {"!", "@", "#", "$", "%", "^", "&", "(", ")"};
+        String[] numbers = (String[]) Useful.lets('0', '9').toArray();
+        String[] capLetter = (String[]) Useful.lets('A', 'Z').toArray();
+        String[] lowLetter = (String[]) Useful.lets('a', 'z').toArray();
+        String[] specLetter = (String[]) Useful.specialChars().toArray();
         
         //Good Password return True
         //Bad Password return Bad 
