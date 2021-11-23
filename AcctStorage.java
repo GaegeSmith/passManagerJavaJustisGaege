@@ -9,7 +9,17 @@ public class AcctStorage {
     }
     public void rmAcct(String location) {
         ArrayList<Account> found = this.find('l', location);
-        if (found.size() == )
+        if (found.size() > 0) {
+            String msg = "";
+            
+            for (int i = 0; i < found.size(); i++) {
+                
+            }
+
+            int toDelete = Useful.intput(msg);
+        } else {
+            System.out.println("No accounts for " + " were found.");
+        }
     }
 
     public ArrayList<Account> find(char type, String description) {

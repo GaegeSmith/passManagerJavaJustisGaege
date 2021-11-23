@@ -61,6 +61,16 @@ public class Useful {
             this.y = y;
         }
     }
+    public static String input(String msg) {
+        Scanner ui = newScanner();
+        System.out.print(msg);
+        return ui.nextLine();
+    }
+    public static int intput(String msg) {
+        Scanner ui = newScanner();
+        System.out.print(msg);
+        return ui.nextInt();
+    }
     public static class GridStr {
         // custom class for dealing with 2D ArrayLists, ugh
         ArrayList<ArrayList<String>> grid;
