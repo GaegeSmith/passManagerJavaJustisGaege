@@ -58,7 +58,9 @@ public class PassManagerJavaJustisGaege {
             
             if(input.equals("a")) {
                 //ask for the account name then add it to the list 
-                System.out.println("What is this account for?");    
+                String cat = Useful.input("What category is this password (ex. Games, Banking, Work)? ");
+                String usedAt = Useful.input("What is this account for?");
+                String 
                 
                 
             
@@ -81,8 +83,8 @@ public class PassManagerJavaJustisGaege {
                 System.out.println("Are you sure?");
                 input = in.nextLine();
                 if(input.equals("yes")) { 
-                    String accountsList = String.join(",",accounts);
-                    String cateorgyList = String.join(",",cateorgy);
+                    String accountsList = String.join(",", accounts);
+                    String cateorgyList = String.join(",", cateorgy);
 
                     //variable to format the write string named output d
                     String output = ("Acccount:"+accountsList+"\n"+"Cateorgys:"+cateorgyList);
