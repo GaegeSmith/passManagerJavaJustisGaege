@@ -48,35 +48,31 @@ public class PassManagerJavaJustisGaege {
         */
 
         Scanner in = new Scanner(System.in);
-        String input = "";
-        int pos;
-        //need to add in a new List for the animal one <-- Done     
-        ArrayList<String> accounts = new ArrayList<String>();
-        ArrayList<String> cateorgy = new ArrayList<String>();
+        String input = "";        
+        AcctStorage accounts = new AcctStorage();
         
-        while (! input.equals("c")){
+        while (! input.equals("c")) {
             //System.out.println(account);
             System.out.println("Would you like to do (a)dd, (r)emove ,(c)lose or (d)elete");
             input = in.nextLine();
             
-            if(input.equals("a")){
+            if(input.equals("a")) {
                 //ask for the account name then add it to the list 
-                System.out.println("What is your Account Name?");    
-                input = in.nextLine();
-                accounts.add(input);
-                System.out.println("Your account name is: " + accounts); //test remove when gaege gets it done 
+                System.out.println("What is this account for?");    
+                
+                
             
-            } else if (input.equals("r")){ 
+            } else if (input.equals("r")) { 
                 System.out.println("Your Accounts are:" + accounts); //test to see if works
                 System.out.println("What account would you like to remove?");
                 input =in.nextLine();
                 accounts.remove(input);
                 System.out.println("Your Accounts are:" + accounts);
-            } else if(input.equals("d")){
+            } else if(input.equals("d")) {
                 input = in.nextLine();
                 accounts.clear();
                 //src: https://howtodoinjava.com/java/collections/arraylist/empty-clear-arraylist/
-            } else if(input.equals("c")){
+            } else if(input.equals("c")) {
                 input = in.nextLine();
                 //.join is going to join the listArray with , 
                 //src: https://stackoverflow.com/questions/599161/best-way-to-convert-an-arraylist-to-a-string
@@ -84,18 +80,15 @@ public class PassManagerJavaJustisGaege {
                 //https://stackoverflow.com/questions/942326/calling-static-method-on-a-class and bander 
                 System.out.println("Are you sure?");
                 input = in.nextLine();
-                if(input.equals("yes")){ 
+                if(input.equals("yes")) { 
                     String accountsList = String.join(",",accounts);
                     String cateorgyList = String.join(",",cateorgy);
 
                     //variable to format the write string named output d
-                    String output= ("Acccount:"+accountsList+"\n"+"Cateorgys:"+cateorgyList);
+                    String output = ("Acccount:"+accountsList+"\n"+"Cateorgys:"+cateorgyList);
                     // BufferWriter.writeString(output);
                     // BufferWriter.saveAndClose(); 
                     System.exit(0);
-                }
-                else if (input.equals("no")){
-
                 }
                 //still needs the save portion 
             }

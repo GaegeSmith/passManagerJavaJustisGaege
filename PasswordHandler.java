@@ -1,7 +1,6 @@
-import java.util.Random;
 import java.security.SecureRandom;
 //https://www.geeksforgeeks.org/random-vs-secure-random-numbers-java/
-import java.security.SecureRandom;
+
 public class PasswordHandler {
     public static boolean checker(String password){
 
@@ -47,17 +46,16 @@ public class PasswordHandler {
         String[] lowLetter = (String[]) Useful.lets('a', 'z').toArray();
         String[] specLetter = (String[]) Useful.specialChars().toArray();    
 
-
-
-
-
-
-
-
-
-
-
+        String password = "";
         
+        
+
+
+
+
+
+
+
         return "";
         
     
