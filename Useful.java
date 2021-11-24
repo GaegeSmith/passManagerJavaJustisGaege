@@ -53,6 +53,13 @@ public class Useful {
         results.add(")");
         return results;
     }
+    public static String multStr(String str, int repeat) {
+        String result = "";
+        for (int i = 0; i <= repeat; i++) {
+            result += str;
+        }
+        return result;
+    }
     public static class Point {
         double x;
         double y;

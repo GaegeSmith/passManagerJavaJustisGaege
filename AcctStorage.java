@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
 public class AcctStorage {
-    ArrayList<Account> accounts = new ArrayList<Account>();
+    private ArrayList<Account> accounts = new ArrayList<Account>();
     
-    public void addAcct(Account acct) {
-        accounts.add(acct);
+    public void addAcct(String usedAt, String username, String password, String category) {
+        accounts.add(new Account(usedAt, username, password, category));
     }
     public void rmAcct(String location) {
         ArrayList<Account> found = this.find('l', location);
@@ -65,9 +65,18 @@ public class AcctStorage {
         }
         return results;
     }
-    public String prepToSave() {
+    public String toPrint() {
         String result = new String();
+        String hrln = "═";
+        String vrln = "║";
+        String vert = "╠";
+        String drcn = "╚";
+
+        ArrayList<String> cats = new ArrayList<String>();
         
+        for (int i = 0; i < accounts.size(); i++) {
+            
+        }
 
         return result;
     }
