@@ -88,15 +88,10 @@ public class AcctStorage {
         for (int i = 0; i < cats.size(); i++) {
             // create a list of all accounts with current category
             ArrayList<Account> tmpCat = this.find('c', cats.get(i));
-            if ((cats.size() - i) > 0) {
-                result += vrln + "\n";
-            }
-            if ((cats.size() - i) > 1) {
-                result += vert + Useful.multStr(hrln, 3);
-            }
-            if ((cats.size() - i) == 1) {
-                result += drcn + Useful.multStr(hrln, 3);
-            }
+            //add different strings based on the current number of accounts left in the category
+            if ((cats.size() - i) > 0) {result += vrln + "\n";}
+            if ((cats.size() - i) > 1) {result += vert + Useful.multStr(hrln, 3);}
+            if ((cats.size() - i) == 1) {result += drcn + Useful.multStr(hrln, 3);}
 
             // loop through that list
             for (int j = 0; j < tmpCat.size(); j++) {
