@@ -65,17 +65,43 @@ public class AcctStorage {
         }
         return results;
     }
-    public String toPrint() {
-        String result = new String();
+    public ArrayList<String> lsCats() {
+        ArrayList<String> cats = new ArrayList<String>();
+        // create list of categories
+        for (int i = 0; i < this.accounts.size(); i++) {
+            if (!cats.contains(this.accounts.get(i).category)) {
+                cats.add(this.accounts.get(i).category);
+            }
+        }
+        return cats;
+    }
+    public String toPrint(User user) {
         String hrln = "═";
         String vrln = "║";
         String vert = "╠";
         String drcn = "╚";
-
-        ArrayList<String> cats = new ArrayList<String>();
+        String result = user.username + "\n";
+        ArrayList<String> cats = this.lsCats();
         
-        for (int i = 0; i < accounts.size(); i++) {
-            
+        
+        // loop through that list
+        for (int i = 0; i < cats.size(); i++) {
+            // create a list of all accounts with current category
+            ArrayList<Account> tmpCat = this.find('c', cats.get(i));
+            if ((cats.size() - i) > 0) {
+                result += vrln + "\n";
+            }
+            if ((cats.size() - i) > 1) {
+                result += vert + Useful.multStr(hrln, 3);
+            }
+            if ((cats.size() - i) == 1) {
+                result += drcn + Useful.multStr(hrln, 3);
+            }
+
+            // loop through that list
+            for (int j = 0; j < tmpCat.size(); j++) {
+                result += "" + 
+            }
         }
 
         return result;
