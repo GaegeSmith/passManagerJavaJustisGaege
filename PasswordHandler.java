@@ -17,7 +17,11 @@ public class PasswordHandler {
         // ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"] 
         //["!", "@", "#", "$", "%", "^", "&", "(", ")"]
         //if password .length <8 then       !contain numbers                    !contains capLetter          !contains lowLetter               !contains SpecLetter return false
-        if (password.length()<8 || !contains(password, numbers) || !contains(password, capLetter) || !contains(password, lowLetter) || !contains(password, specLetter)){
+        if (password.length() < 8 ||
+        !contains(password, numbers) ||
+        !contains(password, capLetter) ||
+        !contains(password, lowLetter) ||
+        !contains(password, specLetter)){
             return false;
         }
         //if it works then return true 
@@ -40,15 +44,23 @@ public class PasswordHandler {
     // Method to generate a random alphanumeric password of a specific length
 
     public static String generator(int len){
-
+        SecureRandom rand = new SecureRandom();
+        
         String[] numbers = (String[]) Useful.lets('0', '9').toArray();
         String[] capLetter = (String[]) Useful.lets('A', 'Z').toArray();
         String[] lowLetter = (String[]) Useful.lets('a', 'z').toArray();
         String[] specLetter = (String[]) Useful.specialChars().toArray();    
-
+        int totalAcceptableChars = numbers.length + capLetter.length + lowLetter.length + specLetter.length;
+        
         String password = "";
+        while (!PasswordHandler.checker(password)) {
         
-        
+            for (int i = 0; i < len; i++) {
+                int randInt = rand.nextInt(totalAcceptableChars);
+                
+            }
+
+        }
 
 
 
@@ -56,7 +68,7 @@ public class PasswordHandler {
 
 
 
-        return "";
+        return password;
         
     
 

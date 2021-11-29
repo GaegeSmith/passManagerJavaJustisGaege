@@ -1,6 +1,5 @@
 import java.util.ArrayList;
-public class PassManagerJavaJustisGaege {
-
+    public class PassManagerJavaJustisGaege {
     public static void main(String[] args) {
         /* TODO:
             Account

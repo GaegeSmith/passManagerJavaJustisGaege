@@ -12,6 +12,10 @@ public class Account {
         this.category = category;
     }
 
+    public String toString() {
+        return "Site/App: " + this.usedAt + ", Username: " + this.username + ", Password: " + this.password;
+    }
+
     public String prepareForSave() {
         return "Account?ua:" + this.usedAt + "?un:" + this.username + "?pw:" + this.password + "?cat:" + this.category;
     }

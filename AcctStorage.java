@@ -76,29 +76,38 @@ public class AcctStorage {
         return cats;
     }
     public String toPrint(User user) {
-        String hrln = "═";
+        // number of chars after the new vertical line
+        int colWidth = 3;
+        String spc = Useful.multStr(" ", colWidth);
+        String hrln = Useful.multStr("═", colWidth);
         String vrln = "║";
         String vert = "╠";
         String drcn = "╚";
-        String result = user.username + "\n";
+        String result = user.username;
         ArrayList<String> cats = this.lsCats();
         
         
         // loop through that list
         for (int i = 0; i < cats.size(); i++) {
+            // add different strings based on the current number of accounts left in the category
+            if ((cats.size() - i) >= 2) {result += "\n" + vert + hrln;}
+            if ((cats.size() - i) == 1) {result += "\n" + drcn + hrln;}
+
+            // always add new category name
+            result += cats.get(i);
+
             // create a list of all accounts with current category
             ArrayList<Account> tmpCat = this.find('c', cats.get(i));
-            //add different strings based on the current number of accounts left in the category
-            if ((cats.size() - i) > 0) {result += vrln + "\n";}
-            if ((cats.size() - i) > 1) {result += vert + Useful.multStr(hrln, 3);}
-            if ((cats.size() - i) == 1) {result += drcn + Useful.multStr(hrln, 3);}
-
-            // loop through that list
+            
+            // loop through that list of accounts
             for (int j = 0; j < tmpCat.size(); j++) {
-                result += "" + 
+                if ((tmpCat.size() - j) >= 2) {result += vert + hrln;}
+                if ((tmpCat.size() - j) == 1) {result += drcn + hrln;}
+                result += vrln + spc + tmpCat.get(j).toString() + "\n";
             }
         }
-
+        
         return result;
     }
+
 }
