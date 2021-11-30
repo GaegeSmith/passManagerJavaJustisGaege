@@ -14,7 +14,12 @@ public class User {
     public boolean login() {
         int attempts = 3;
         while (attempts > 0) {
-            
+            if (attempts == 1) {
+                
+            }
+            if (Useful.input("Username: ") == this.username && Useful.input("Password: ") == this.password) {
+                return true;
+            }
             
 
             attempts--;
