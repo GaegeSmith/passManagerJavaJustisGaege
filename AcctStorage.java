@@ -2,12 +2,31 @@ import java.util.ArrayList;
 
 public class AcctStorage {
     private ArrayList<Account> accounts = new ArrayList<Account>();
-    private BufferWriter readWrite = new BufferWriter("store.txt");
+    private User user;
+    private BufferWriter userFile = new BufferWriter("user.txt");
     public AcctStorage() {
-        if (readWrite.exists()) {
+        // if a file for an account exists
+        if (userFile.exists()) {
+            // read the user file
+            try {
+                userFile.readString();
+            } catch (Exception e) {
+                System.out.println("How did you find this Easter Egg, this should never print");
+            }
+            
             // login
+            if (!this.user.login()) {
+                System.out.println("Sorry, you have failed the login process to many times.");
+                System.exit(0);
+            }
         } else {
-            // create acct and login
+            // create acct
+
+            // login
+            if (!this.user.login()) {
+                System.out.println("Sorry, you have failed the login process to many times.");
+                System.exit(0);
+            }
         }
     }
     

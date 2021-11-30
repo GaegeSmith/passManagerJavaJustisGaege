@@ -15,13 +15,14 @@ public class User {
         int attempts = 3;
         while (attempts > 0) {
             if (attempts == 1) {
-                
+                System.out.println("Password hint: " + this.password);
             }
-            if (Useful.input("Username: ") == this.username && Useful.input("Password: ") == this.password) {
+            String username = Useful.input("Username: ");
+            System.out.println();
+            String password = Useful.input("Password: ");
+            if (username == this.username && password == this.password) {
                 return true;
             }
-            
-
             attempts--;
         }
         return false;

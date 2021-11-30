@@ -2,6 +2,8 @@ import java.util.ArrayList;
 
 public class Test {
     public static void main(String[] args) {
-        Useful.input("Username");
+        System.out.println("Hello there");
+        System.exit(0);
+        System.out.println("Hello there");
     }
 }

@@ -1,6 +1,7 @@
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
+import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BufferWriter {
@@ -68,27 +69,14 @@ public class BufferWriter {
     }
     
     // readString
-    public String readString() throws Exception {
-        String urMom = null;
+    public ArrayList<String> readString() throws Exception {
+        ArrayList<String> urMom = new ArrayList<String>();
         if (this.in == null) {
-            // try {
-                this.in = new Scanner(new File(this.dataFile));
-            // } catch (Exception e) {
-            //     System.err.println("Cannot open file!");
-            //     e.printStackTrace();
-            // }
+            this.in = new Scanner(new FileReader(this.dataFile));
         }
-
-        // try {
-            // check if in hasNext line
-            if (this.in.hasNext()) {
-                String s = this.in.nextLine();
-                return s; // grabing everything
-            }
-        // } catch (Exception e) {
-        //     System.err.println("I cannot read!");
-        //     e.printStackTrace();
-        // }
+        while (this.in.hasNext()) {
+            urMom.add(this.in.nextLine());
+        }
 
         return urMom;
     }
