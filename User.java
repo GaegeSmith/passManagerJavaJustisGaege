@@ -11,7 +11,16 @@ public class User {
         this.password = pw;
         this.hint = h;
     }
+    public boolean login() {
+        int attempts = 3;
+        while (attempts > 0) {
+            
+            
 
+            attempts--;
+        }
+        return false;
+    }
     public String prepareForSave() {
         return "User?fn:" + this.firstName + "?ln:" + this.lastName + "?un:" + this.username + "?pw:" + this.password + "?h:" + this.hint;
     }

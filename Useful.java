@@ -53,6 +53,20 @@ public class Useful {
         results.add(")");
         return results;
     }
+    public static boolean boolArrContains(boolean[] arr, boolean val) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == val) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public static boolean[] boolArrSet(boolean[] arr, boolean val) {
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = val;
+        }
+        return arr;
+    }
     public static String multStr(String str, int repeat) {
         String result = "";
         for (int i = 0; i <= repeat; i++) {

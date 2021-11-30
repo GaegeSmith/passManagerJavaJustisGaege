@@ -7,7 +7,7 @@ public class PasswordHandler {
         String[] numbers = (String[]) Useful.lets('0', '9').toArray();
         String[] capLetter = (String[]) Useful.lets('A', 'Z').toArray();
         String[] lowLetter = (String[]) Useful.lets('a', 'z').toArray();
-        String[] specLetter = (String[]) Useful.specialChars().toArray();
+        String[] specChars = (String[]) Useful.specialChars().toArray();
 
         
         //Good Password return True
@@ -21,7 +21,7 @@ public class PasswordHandler {
         !contains(password, numbers) ||
         !contains(password, capLetter) ||
         !contains(password, lowLetter) ||
-        !contains(password, specLetter)){
+        !contains(password, specChars)){
             return false;
         }
         //if it works then return true 
@@ -49,15 +49,34 @@ public class PasswordHandler {
         String[] numbers = (String[]) Useful.lets('0', '9').toArray();
         String[] capLetter = (String[]) Useful.lets('A', 'Z').toArray();
         String[] lowLetter = (String[]) Useful.lets('a', 'z').toArray();
-        String[] specLetter = (String[]) Useful.specialChars().toArray();    
-        int totalAcceptableChars = numbers.length + capLetter.length + lowLetter.length + specLetter.length;
-        
+        String[] specChars = (String[]) Useful.specialChars().toArray();    
+        boolean[] complete = new boolean[4];
         String password = "";
-        while (!PasswordHandler.checker(password)) {
-        
-            for (int i = 0; i < len; i++) {
-                int randInt = rand.nextInt(totalAcceptableChars);
+
+        while (Useful.boolArrContains(complete, false)) {
+            complete = Useful.boolArrSet(complete, false);
+            password = "";
+
+            for (int i = len; i > 0; i--) {
+                // pick 0-3, 0 to grab random from numbers, 1 to grab random from caps, 2 grabs from low, 3 grabs from spec
+                int randLst = rand.nextInt(4);
+                switch (randLst) {
+                    case 0:
+                        password += numbers[rand.nextInt(numbers.length)];
+                        break;
+                    case 1:
+                        password += capLetter[rand.nextInt(capLetter.length)];
+                        break;
+                    case 2:
+                        password += lowLetter[rand.nextInt(lowLetter.length)];
+                        break;
+                    case 3:
+                        password += specChars[rand.nextInt(specChars.length)];
+                        break;
+                }
                 
+
+
             }
 
         }

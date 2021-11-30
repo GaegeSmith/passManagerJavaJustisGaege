@@ -45,13 +45,17 @@ import java.util.ArrayList;
                 
         */
 
-        String input = "";        
+        String input = "";
         AcctStorage accounts = new AcctStorage();
-        
+
         while (! input.equals("c")) {
             //System.out.println(account);
             input = Useful.input("Would you like to do (a)dd, (r)emove ,(c)lose or (d)elete? ");
             
+            
+            
+            
+            /*
             if(input.equals("a")) {
                 //ask for the account info
                 String cat = Useful.input("What category is this password (ex. Games, Banking, Work)? ");
@@ -106,6 +110,7 @@ import java.util.ArrayList;
                 }
                 //still needs the save portion 
             }
+            */
         }
     }
 }

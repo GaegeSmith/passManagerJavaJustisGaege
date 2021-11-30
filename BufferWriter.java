@@ -6,19 +6,27 @@ import java.util.Scanner;
 public class BufferWriter {
     
     // global variables
-    private String dataFile;
-    private static Scanner in;
-    private static BufferedWriter out;
+    public String dataFile;
+    private Scanner in;
+    private BufferedWriter out;
     BufferWriter(String fileName) {
         this.dataFile = fileName;
     }
-    
+    // trys to read from the file, if the reading errors return false, file no existo, if it works return true, file does indeed exist
+    public boolean exists() {
+        try {
+            this.readString();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
     // writeString
     public void writeString(String s) {
         // check to see if out is assigned
-        if (out == null) {
+        if (this.out == null) {
             try {
-                out = new BufferedWriter(new FileWriter(this.dataFile));
+                this.out = new BufferedWriter(new FileWriter(this.dataFile));
             } catch (Exception e) {
                 System.err.println("Cannot open file for output!");
                 e.printStackTrace();
@@ -26,8 +34,8 @@ public class BufferWriter {
         }
 
         try {
-            out.write(s);
-            out.newLine();
+            this.out.write(s);
+            this.out.newLine();
         } catch (Exception e) {
             System.err.println("Cannot write file!");
             e.printStackTrace();
@@ -37,10 +45,10 @@ public class BufferWriter {
     // saveAndClose
     public void saveAndClose() {
         // closes after the Scanner is done reading flie
-        if (in != null) {
+        if (this.in != null) {
             try {
-                in.close();
-                in = null;
+                this.in.close();
+                this.in = null;
             } catch (Exception e) {
                 System.err.println("Cannot close input file!");
                 e.printStackTrace();
@@ -48,10 +56,10 @@ public class BufferWriter {
         }
 
         // closes after the BufferedWriter is done writing to the file
-        if (out != null) {
+        if (this.out != null) {
             try {
-                out.close();
-                out = null;
+                this.out.close();
+                this.out = null;
             } catch (Exception e) {
                 System.err.println("Cannot close output file!");
                 e.printStackTrace();
@@ -60,27 +68,27 @@ public class BufferWriter {
     }
     
     // readString
-    public String readString() {
+    public String readString() throws Exception {
         String urMom = null;
-        if (in == null) {
-            try {
-                in = new Scanner(new File(dataFile));
-            } catch (Exception e) {
-                System.err.println("Cannot open file for input!");
-                e.printStackTrace();
-            }
+        if (this.in == null) {
+            // try {
+                this.in = new Scanner(new File(this.dataFile));
+            // } catch (Exception e) {
+            //     System.err.println("Cannot open file!");
+            //     e.printStackTrace();
+            // }
         }
 
-        try {
+        // try {
             // check if in hasNext line
-            if (in.hasNext()) {
-                String s = in.nextLine();
+            if (this.in.hasNext()) {
+                String s = this.in.nextLine();
                 return s; // grabing everything
             }
-        } catch (Exception e) {
-            System.err.println("I cannot read!");
-            e.printStackTrace();
-        }
+        // } catch (Exception e) {
+        //     System.err.println("I cannot read!");
+        //     e.printStackTrace();
+        // }
 
         return urMom;
     }

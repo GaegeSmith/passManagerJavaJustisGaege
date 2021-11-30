@@ -2,6 +2,14 @@ import java.util.ArrayList;
 
 public class AcctStorage {
     private ArrayList<Account> accounts = new ArrayList<Account>();
+    private BufferWriter readWrite = new BufferWriter("store.txt");
+    public AcctStorage() {
+        if (readWrite.exists()) {
+            // login
+        } else {
+            // create acct and login
+        }
+    }
     
     public void addAcct(String usedAt, String username, String password, String category) {
         accounts.add(new Account(usedAt, username, password, category));
@@ -109,5 +117,8 @@ public class AcctStorage {
         
         return result;
     }
-
+    public void saveAndClose() {
+        // TODO:
+        // do this
+    }
 }
