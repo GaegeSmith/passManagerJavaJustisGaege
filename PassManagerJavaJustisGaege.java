@@ -1,4 +1,3 @@
-import java.util.ArrayList;
     public class PassManagerJavaJustisGaege {
     public static void main(String[] args) {
         /* TODO:
@@ -48,12 +47,23 @@ import java.util.ArrayList;
         String input = "";
         AcctStorage accounts = new AcctStorage();
 
-        while (! input.equals("c")) {
-            //System.out.println(account);
-            input = Useful.input("Would you like to do (a)dd, (r)emove ,(c)lose or (d)elete? ");
+        while (true) {
+            System.out.println(accounts.toPrint());
+            input = Useful.input("Would you like to do \"a\" add an account, \"r\" remove an account, \"c\" close The Best Password Manager(C), or \"delete\" your entire profile? ");
+            if (input.equals("c")) {
+                accounts.saveAndClose();
+            }
+            if (input.equals("a")) {
+                accounts.addAcct();
+            }
+            if (input.equals("r")) {
+                accounts.rmAcct();
+            }
+            if (input.equals("delete")) {
+                accounts.delete();
+            }
             
-            
-            
+            System.out.println(Useful.multStr("\n", 100));
             
             /*
             if(input.equals("a")) {
@@ -112,6 +122,6 @@ import java.util.ArrayList;
             }
             */
         }
-        accounts.saveAndClose();
     }
 }
+// H3l!loooooo

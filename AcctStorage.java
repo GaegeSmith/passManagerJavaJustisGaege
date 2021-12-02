@@ -33,27 +33,33 @@ public class AcctStorage {
         } else {
             // create acct
             this.user = new User();
-            dataFile.writeString(this.user.prepareForSave());
+            
             // login
             if (!this.user.login()) {
                 // if user fails login, save their account
                 System.out.println("Sorry, you have failed the login process to many times.");
+                dataFile.writeString(this.user.prepareForSave());
                 dataFile.saveAndClose();
                 System.exit(0);
             }
         }
     }
     
-    public void addAcct(String usedAt, String username, String password, String category) {
+    public void addAcct() {
+        String usedAt = Useful.input("What website or app is this account for? ");
+        String username = Useful.input("What is your username? ");
+        String password = PasswordHandler.pwPrompt();
+        String category = Useful.input("What category is this account (examples: Banking, Gaming, Work, etc.)? ");
         accounts.add(new Account(usedAt, username, password, category));
     }
-    public void rmAcct(String location) {
+    public void rmAcct() {
+        String location = Useful.input("What app or website is the account for that you want to remove? ");
         ArrayList<Account> found = this.find('l', location);
         if (found.size() > 1) {
             String msg = "Which account do you want to remove?\n";
             
             for (int i = 0; i < found.size(); i++) {
-                msg += "" + (i + 1) + ". " + found.get(i).username + "\n";
+                msg += "" + (i + 1) + ". " + found.get(i).username + "═══" + found.get(i).password+ "\n";
             }
 
             int toDelete = Useful.intput(msg) - 1;
@@ -82,22 +88,22 @@ public class AcctStorage {
         for (int i = 0; i < this.accounts.size(); i++) {
             switch (type) {
                 case 'c':
-                    if (this.accounts.get(i).category == description) {
+                    if (this.accounts.get(i).category.equals(description)) {
                         results.add(this.accounts.get(i));
                     }
                 break;
                 case 'l':
-                    if (this.accounts.get(i).usedAt == description) {
+                    if (this.accounts.get(i).usedAt.equals(description)) {
                         results.add(this.accounts.get(i));
                     }
                 break;
                 case 'u':
-                    if (this.accounts.get(i).username == description) {
+                    if (this.accounts.get(i).username.equals(description)) {
                         results.add(this.accounts.get(i));
                     }
                 break;
                 case 'p':
-                    if (this.accounts.get(i).password == description) {
+                    if (this.accounts.get(i).password.equals(description)) {
                         results.add(this.accounts.get(i));
                     }
                 break;
@@ -135,16 +141,20 @@ public class AcctStorage {
             if ((cats.size() - i) == 1) {result += "\n" + drcn + hrln;}
 
             // always add new category name
-            result += cats.get(i);
+            result += cats.get(i) + "\n";
 
             // create a list of all accounts with current category
             ArrayList<Account> tmpCat = this.find('c', cats.get(i));
             
             // loop through that list of accounts
             for (int j = 0; j < tmpCat.size(); j++) {
-                if ((tmpCat.size() - j) >= 2) {result += vert + hrln;}
-                if ((tmpCat.size() - j) == 1) {result += drcn + hrln;}
-                result += vrln + spc + tmpCat.get(j).toString() + "\n";
+                if ((tmpCat.size() - j) >= 2) {result += vrln + spc + vert + hrln;}
+                if ((tmpCat.size() - j) == 1) {result += vrln + spc + drcn + hrln;}
+                if (j == tmpCat.size() - 1) {
+                    result += tmpCat.get(j).toString(colWidth, " ") + "\n";
+                } else {
+                    result += tmpCat.get(j).toString(colWidth, vrln) + "\n";
+                }
             }
         }
         
@@ -154,6 +164,21 @@ public class AcctStorage {
         this.dataFile.writeString(this.user.prepareForSave());
         for (int i = 0; i < this.accounts.size(); i++) {
             this.dataFile.writeString(this.accounts.get(i).prepareForSave());
+        }
+        this.dataFile.saveAndClose();
+        System.exit(0);
+    }
+    public void delete() {
+        System.out.println("PLEASE NOTE\nDeleteing your profile is PERMANENT adn CANNOT BE REVERSED.\nProceed at your own risk.");
+        if (Useful.input("Please enter your password to confirm delete, or anything else to cancel: ").equals(this.user.password)) {
+            accounts = new ArrayList<Account>();
+            user.firstName = "";
+            user.lastName = "";
+            user.username = "";
+            user.password = "";
+            user.hint = "";
+            this.dataFile.delete();
+            System.exit(0);
         }
     }
 }

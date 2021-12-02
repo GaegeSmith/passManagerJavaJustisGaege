@@ -2,6 +2,20 @@ import java.security.SecureRandom;
 //https://www.geeksforgeeks.org/random-vs-secure-random-numbers-java/
 
 public class PasswordHandler {
+    public static String pwPrompt() {
+        String password = "";
+        while (!checker(password)) {
+            password = Useful.input("What do you want your password to be, must be 8 characters with at least one of each of these: UPPERCASE LETTER, lowercase letter, number 0-9, and special characters \"!\", \"@\", \"#\", \"$\", \"%\", \"^\", \"&\", \"(\", \")\", or type \"gen\" to generate one automagically(C): ");
+            if (password.equals("gen")) {
+                int len = 0;
+                while (!(8 <= len && len <= 20)) {
+                    len = Useful.intput("How long do you want your password, between 8 and 20 characters? ");
+                }
+                password = generator(len);
+            }
+        }
+        return password;
+    }
     public static boolean checker(String password){
 
         String[] numbers = Useful.letsArr('0', '9');
@@ -16,8 +30,9 @@ public class PasswordHandler {
         //contains atleast one :["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p","q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
         // ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"] 
         //["!", "@", "#", "$", "%", "^", "&", "(", ")"]
-        //if password .length <= 8 then       !contain numbers                    !contains capLetter          !contains lowLetter               !contains SpecLetter return false
-        if (password.length() <= 8 ||
+        //if password .length < 8 then       !contain numbers                    !contains capLetter          !contains lowLetter               !contains SpecLetter return false
+        if (password.length() < 8 ||
+        password.length() > 20 ||
         !contains(password, numbers) ||
         !contains(password, capLetter) ||
         !contains(password, lowLetter) ||
@@ -48,18 +63,28 @@ public class PasswordHandler {
         String[] numbers = Useful.letsArr('0', '9');
         String[] capLetter = Useful.letsArr('A', 'Z');
         String[] lowLetter = Useful.letsArr('a', 'z');
-        String[] specChars = Useful.specialCharsArr();    
-        boolean[] complete = new boolean[4];
+        String[] specChars = Useful.specialCharsArr();
         String password = "";
         System.out.println("In gen");
-        while (Useful.boolArrContains(complete, false)) {
+        boolean[] complete = new boolean[4];
+
+        while (!checker(password)) {
             complete = Useful.boolArrSet(complete, false);
-            System.out.println("pass " + password);
             password = "";
-            for (int i = 0; i < len; i++) {
-                System.out.println(complete.toString());
+
+            for (int i = len; i > 0; i--) {
                 // pick 0-3, 0 to grab random from numbers, 1 to grab random from caps, 2 grabs from low, 3 grabs from spec
-                int randLst = rand.nextInt(4);
+                int randLst = 0;
+                if (len - 5 < i) {
+                    if (Useful.boolArrContains(complete, false)) {
+                        randLst = Useful.boolArrFind(complete, false);
+                    } else {
+                        randLst = rand.nextInt(4);
+                    }
+                } else {
+                    randLst = rand.nextInt(4);
+                }
+
                 switch (randLst) {
                     case 0:
                         password += numbers[rand.nextInt(numbers.length)];
@@ -79,34 +104,10 @@ public class PasswordHandler {
                         break;
                 }
                 
-
-
             }
 
         }
-
-
-
-
-
-
-
         return password;
-        
-    
-
-        // using secure random for a cryptographically strong random number generator.
-        // SecureRandom random = new SecureRandom();
-        // for (int i = 0; i < len; i++){
-        //     //getting the random next Int inside of the chars list 
-        //     int randomIndex = random.nextInt(chars.length);
-        //     //charAt  returns a character at a specific index position in a string  
-        //     sb.append(chars.charAt(randomIndex));
-        // }
- 
-        //return sb.toString();
     }
 
-
 }
-

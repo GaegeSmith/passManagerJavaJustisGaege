@@ -12,8 +12,8 @@ public class Account {
         this.category = category;
     }
 
-    public String toString() {
-        return "Site/App: " + this.usedAt + ", Username: " + this.username + ", Password: " + this.password;
+    public String toString(int colWidth, String nextLine) {
+        return "Site/App: " + this.usedAt + "\n║" + Useful.multStr(" ", colWidth) + nextLine + Useful.multStr(" ", colWidth) + "╚" + Useful.multStr("═", colWidth) + "Username: " + this.username + Useful.multStr("═", colWidth) + "Password: " + this.password;
     }
 
     public String prepareForSave() {

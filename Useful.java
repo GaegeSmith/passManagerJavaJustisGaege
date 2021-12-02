@@ -69,6 +69,14 @@ public class Useful {
         }
         return false;
     }
+    public static int boolArrFind(boolean[] arr, boolean val) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == val) {
+                return i;
+            }
+        }
+        return 0;
+    }
     public static boolean[] boolArrSet(boolean[] arr, boolean val) {
         for (int i = 0; i < arr.length; i++) {
             arr[i] = val;
@@ -77,7 +85,7 @@ public class Useful {
     }
     public static String multStr(String str, int repeat) {
         String result = "";
-        for (int i = 0; i <= repeat; i++) {
+        for (int i = 0; i < repeat; i++) {
             result += str;
         }
         return result;
