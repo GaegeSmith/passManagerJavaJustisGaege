@@ -1,4 +1,5 @@
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -16,7 +17,8 @@ public class BufferWriter {
     // trys to read from the file, if the reading errors return false, file no existo, if it works return true, file does indeed exist
     public boolean exists() {
         try {
-            this.readString();
+            Scanner tmp = new Scanner(new FileReader(this.dataFile));
+            tmp.close();
             return true;
         } catch (Exception e) {
             return false;
@@ -69,15 +71,17 @@ public class BufferWriter {
     }
     
     // readString
-    public ArrayList<String> readString() throws Exception {
+    public ArrayList<String> readString() throws FileNotFoundException {
         ArrayList<String> urMom = new ArrayList<String>();
         if (this.in == null) {
             this.in = new Scanner(new FileReader(this.dataFile));
         }
+        // System.out.println(this.in.hasNext());
+        // while there are lines left
         while (this.in.hasNext()) {
+            // add the next line to the results
             urMom.add(this.in.nextLine());
         }
-
         return urMom;
     }
 }

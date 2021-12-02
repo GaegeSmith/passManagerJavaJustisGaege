@@ -17,7 +17,7 @@ public class Account {
     }
 
     public String prepareForSave() {
-        return "Account?ua:" + this.usedAt + "?un:" + this.username + "?pw:" + this.password + "?cat:" + this.category;
+        return this.usedAt + "?" + this.username + "?" + this.password + "?" + this.category;
     }
     
 }

@@ -53,6 +53,14 @@ public class Useful {
         results.add(")");
         return results;
     }
+    public static String[] letsArr(char start, char end) {
+        ArrayList<String> tmp = lets(start, end);
+        return tmp.toArray(new String[tmp.size()]);
+    }
+    public static String[] specialCharsArr() {
+        ArrayList<String> tmp = specialChars();
+        return tmp.toArray(new String[tmp.size()]);
+    }
     public static boolean boolArrContains(boolean[] arr, boolean val) {
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == val) {

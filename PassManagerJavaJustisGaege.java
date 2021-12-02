@@ -112,5 +112,6 @@ import java.util.ArrayList;
             }
             */
         }
+        accounts.saveAndClose();
     }
 }

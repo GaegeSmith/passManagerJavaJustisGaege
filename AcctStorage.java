@@ -3,15 +3,26 @@ import java.util.ArrayList;
 public class AcctStorage {
     private ArrayList<Account> accounts = new ArrayList<Account>();
     private User user;
-    private BufferWriter userFile = new BufferWriter("user.txt");
+    private BufferWriter dataFile = new BufferWriter("data.txt");
     public AcctStorage() {
         // if a file for an account exists
-        if (userFile.exists()) {
+        if (dataFile.exists()) {
             // read the user file
+            ArrayList<String> lines = new ArrayList<String>();
             try {
-                userFile.readString();
+                lines = dataFile.readString();
+                dataFile.saveAndClose();
             } catch (Exception e) {
-                System.out.println("How did you find this Easter Egg, this should never print");
+                // for this to print, the data file would have to be deleted or corrupted after the userFile.exists() runs and before the userFile.readString() runs
+                System.out.println("How did you find this Easter Egg, this should never print, good job!\n\n\n\nBad news...your data file was deleted with incredible timing or corrupted");
+            }
+            for (int i = 0; i < lines.size(); i++) {
+                String[] tmpLine = lines.get(i).split("\\?");
+                if (tmpLine[0].equals("User")) {
+                    this.user = new User(tmpLine[1], tmpLine[2], tmpLine[3], tmpLine[4], tmpLine[5]);
+                } else {
+                    accounts.add(new Account(tmpLine[0], tmpLine[1], tmpLine[2], tmpLine[3]));
+                }
             }
             
             // login
@@ -21,10 +32,13 @@ public class AcctStorage {
             }
         } else {
             // create acct
-
+            this.user = new User();
+            dataFile.writeString(this.user.prepareForSave());
             // login
             if (!this.user.login()) {
+                // if user fails login, save their account
                 System.out.println("Sorry, you have failed the login process to many times.");
+                dataFile.saveAndClose();
                 System.exit(0);
             }
         }
@@ -102,7 +116,7 @@ public class AcctStorage {
         }
         return cats;
     }
-    public String toPrint(User user) {
+    public String toPrint() {
         // number of chars after the new vertical line
         int colWidth = 3;
         String spc = Useful.multStr(" ", colWidth);
@@ -110,7 +124,7 @@ public class AcctStorage {
         String vrln = "║";
         String vert = "╠";
         String drcn = "╚";
-        String result = user.username;
+        String result = this.user.username;
         ArrayList<String> cats = this.lsCats();
         
         
@@ -137,7 +151,9 @@ public class AcctStorage {
         return result;
     }
     public void saveAndClose() {
-        // TODO:
-        // do this
+        this.dataFile.writeString(this.user.prepareForSave());
+        for (int i = 0; i < this.accounts.size(); i++) {
+            this.dataFile.writeString(this.accounts.get(i).prepareForSave());
+        }
     }
 }

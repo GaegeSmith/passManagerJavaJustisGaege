@@ -4,10 +4,10 @@ import java.security.SecureRandom;
 public class PasswordHandler {
     public static boolean checker(String password){
 
-        String[] numbers = (String[]) Useful.lets('0', '9').toArray();
-        String[] capLetter = (String[]) Useful.lets('A', 'Z').toArray();
-        String[] lowLetter = (String[]) Useful.lets('a', 'z').toArray();
-        String[] specChars = (String[]) Useful.specialChars().toArray();
+        String[] numbers = Useful.letsArr('0', '9');
+        String[] capLetter = Useful.letsArr('A', 'Z');
+        String[] lowLetter = Useful.letsArr('a', 'z');
+        String[] specChars = Useful.specialCharsArr();
 
         
         //Good Password return True
@@ -16,8 +16,8 @@ public class PasswordHandler {
         //contains atleast one :["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p","q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
         // ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"] 
         //["!", "@", "#", "$", "%", "^", "&", "(", ")"]
-        //if password .length <8 then       !contain numbers                    !contains capLetter          !contains lowLetter               !contains SpecLetter return false
-        if (password.length() < 8 ||
+        //if password .length <= 8 then       !contain numbers                    !contains capLetter          !contains lowLetter               !contains SpecLetter return false
+        if (password.length() <= 8 ||
         !contains(password, numbers) ||
         !contains(password, capLetter) ||
         !contains(password, lowLetter) ||
@@ -45,33 +45,37 @@ public class PasswordHandler {
 
     public static String generator(int len){
         SecureRandom rand = new SecureRandom();
-        
-        String[] numbers = (String[]) Useful.lets('0', '9').toArray();
-        String[] capLetter = (String[]) Useful.lets('A', 'Z').toArray();
-        String[] lowLetter = (String[]) Useful.lets('a', 'z').toArray();
-        String[] specChars = (String[]) Useful.specialChars().toArray();    
+        String[] numbers = Useful.letsArr('0', '9');
+        String[] capLetter = Useful.letsArr('A', 'Z');
+        String[] lowLetter = Useful.letsArr('a', 'z');
+        String[] specChars = Useful.specialCharsArr();    
         boolean[] complete = new boolean[4];
         String password = "";
-
+        System.out.println("In gen");
         while (Useful.boolArrContains(complete, false)) {
             complete = Useful.boolArrSet(complete, false);
+            System.out.println("pass " + password);
             password = "";
-
-            for (int i = len; i > 0; i--) {
+            for (int i = 0; i < len; i++) {
+                System.out.println(complete.toString());
                 // pick 0-3, 0 to grab random from numbers, 1 to grab random from caps, 2 grabs from low, 3 grabs from spec
                 int randLst = rand.nextInt(4);
                 switch (randLst) {
                     case 0:
                         password += numbers[rand.nextInt(numbers.length)];
+                        complete[0] = true;
                         break;
                     case 1:
                         password += capLetter[rand.nextInt(capLetter.length)];
+                        complete[1] = true;
                         break;
                     case 2:
                         password += lowLetter[rand.nextInt(lowLetter.length)];
+                        complete[2] = true;
                         break;
                     case 3:
                         password += specChars[rand.nextInt(specChars.length)];
+                        complete[3] = true;
                         break;
                 }
                 
